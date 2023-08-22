@@ -1,11 +1,71 @@
 [
   {
-    "type": "source_file",
+    "type": "LParen",
     "named": true,
     "fields": {}
   },
   {
-    "type": "hello",
+    "type": "RParen",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "Num",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-inf",
+    "named": false
+  },
+  {
+    "type": "Ident",
+    "named": true
+  },
+  {
+    "type": "NaN",
+    "named": false
+  },
+  {
+    "type": "Num",
+    "named": true
+  },
+  {
+    "type": "String",
+    "named": true
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "inf",
     "named": false
   }
 ]

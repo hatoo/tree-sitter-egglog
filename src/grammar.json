@@ -2,14 +2,129 @@
   "name": "egglog",
   "rules": {
     "source_file": {
-      "type": "STRING",
-      "value": "hello"
+      "type": "SYMBOL",
+      "name": "Num"
+    },
+    "_expr": {
+      "type": "SYMBOL",
+      "name": "Ident"
+    },
+    "LParen": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        }
+      ]
+    },
+    "RParen": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "List": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "LParen"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "RParen"
+        }
+      ]
+    },
+    "Comma": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expr"
+          },
+          {
+            "type": "STRING",
+            "value": ","
+          }
+        ]
+      }
+    },
+    "Command": {
+      "type": "CHOICE",
+      "members": []
+    },
+    "Num": {
+      "type": "PATTERN",
+      "value": "(-)?[0-9]+"
+    },
+    "UNum": {
+      "type": "PATTERN",
+      "value": "[0-9]+"
+    },
+    "F64": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "NaN"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(-)?[0-9]+\\.[0-9]+(e(\\+)?(-)?[0-9]+)?"
+        },
+        {
+          "type": "STRING",
+          "value": "inf"
+        },
+        {
+          "type": "STRING",
+          "value": "-inf"
+        }
+      ]
+    },
+    "Ident": {
+      "type": "PATTERN",
+      "value": "(([[a-zA-z_]][\\w-]*)|([-+*/?!=<>&|^/%_]))+"
+    },
+    "SymString": {
+      "type": "SYMBOL",
+      "name": "String"
+    },
+    "String": {
+      "type": "PATTERN",
+      "value": "\"(\"[^\"]*\")+\""
     }
   },
   "extras": [
     {
       "type": "PATTERN",
       "value": "\\s"
+    },
+    {
+      "type": "PATTERN",
+      "value": ";[^\\n\\r]*[\\n\\r]*"
     }
   ],
   "conflicts": [],
