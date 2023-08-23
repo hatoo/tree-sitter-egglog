@@ -472,6 +472,10 @@
     "named": false
   },
   {
+    "type": ":default",
+    "named": false
+  },
+  {
     "type": ":merge",
     "named": false
   },

@@ -40,6 +40,7 @@ module.exports = grammar({
           optional(":unextractable"),
           optional(seq(":on_merge", list($, $.action))),
           optional(seq(":merge", $.expr)),
+          optional(seq(":default", $.expr)),
           $.rparen
         ),
         seq($.lparen, "declare", $.ident, $.ident, $.rparen),
