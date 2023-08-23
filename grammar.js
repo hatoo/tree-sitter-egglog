@@ -1,3 +1,5 @@
+const list = ($, item) => seq($.lparen, repeat(item), $.rparen);
+
 module.exports = grammar({
   name: "egglog",
 
@@ -10,17 +12,71 @@ module.exports = grammar({
     lparen: ($) => choice("(", "["),
     rparen: ($) => choice(")", "]"),
 
-    list: ($) => seq($.lparen, repeat($.expr), $.rparen),
     comma: ($) => repeat1(seq($.expr, ",")),
 
     command: ($) =>
-      choice(seq($.lparen, "set-option", $.ident, $.expr, $.rparen)),
+      choice(
+        seq($.lparen, "set-option", $.ident, $.expr, $.rparen),
+        seq($.lparen, "datatype", $.ident, repeat($.variant), $.rparen),
+        seq(
+          $.lparen,
+          "sort",
+          $.ident,
+          $.lparen,
+          $.ident,
+          repeat($.expr),
+          $.rparen,
+          $.rparen
+        ),
+        seq($.lparen, "sort", $.ident, $.rparen)
+      ),
 
-    expr: ($) => choice($.ident, $.literal, $.callexpr),
+    cost: ($) => seq(":cost", $.unum),
+
+    nonletaction: ($) =>
+      choice(
+        seq(
+          $.lparen,
+          $.lparen,
+          "set",
+          $.ident,
+          repeat($.expr),
+          $.rparen,
+          $.expr,
+          $.rparen
+        ),
+        seq(
+          $.lparen,
+          "delete",
+          $.lparen,
+          $.ident,
+          repeat($.expr),
+          $.rparen,
+          $.rparen
+        ),
+        seq($.lparen, "union", $.expr, $.expr, $.rparen),
+        seq($.lparen, "panic", $.string, $.rparen),
+        seq($.lparen, "extract", $.expr, $.rparen),
+        seq($.lparen, "extract", $.expr, $.expr, $.rparen),
+        $.callexpr
+      ),
+
+    action: ($) =>
+      choice(seq($.lparen, "let", $.ident, $.expr, $.rparen), $.nonletaction),
+
+    schema: ($) => seq(list($, $.type), $.type),
+
+    expr: ($) => choice($.literal, $.ident, $.callexpr),
 
     literal: ($) => choice($.num, $.f64, $.symstring),
 
     callexpr: ($) => seq($.lparen, $.ident, repeat($.expr), $.rparen),
+
+    exprlist: ($) => seq($.lparen, repeat($.expr), $.rparen),
+
+    variant: ($) => seq($.ident, repeat($.type), optional($.cost), $.rparen),
+
+    type: ($) => choice($.ident),
 
     num: ($) => /(-)?[0-9]+/,
     unum: ($) => /[0-9]+/,

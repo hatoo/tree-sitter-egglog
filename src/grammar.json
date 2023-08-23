@@ -31,26 +31,6 @@
         }
       ]
     },
-    "list": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "lparen"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expr"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "rparen"
-        }
-      ]
-    },
     "comma": {
       "type": "REPEAT1",
       "content": {
@@ -94,6 +74,314 @@
               "name": "rparen"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "datatype"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "variant"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "sort"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "sort"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        }
+      ]
+    },
+    "cost": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":cost"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unum"
+        }
+      ]
+    },
+    "nonletaction": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "set"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "delete"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "union"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "panic"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "extract"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "extract"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "callexpr"
+        }
+      ]
+    },
+    "schema": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "type"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
         }
       ]
     },
@@ -102,11 +390,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "ident"
+          "name": "literal"
         },
         {
           "type": "SYMBOL",
-          "name": "literal"
+          "name": "ident"
         },
         {
           "type": "SYMBOL",
@@ -152,6 +440,67 @@
         {
           "type": "SYMBOL",
           "name": "rparen"
+        }
+      ]
+    },
+    "exprlist": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "lparen"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
+    "variant": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ident"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "type"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cost"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
+    "type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ident"
         }
       ]
     },
