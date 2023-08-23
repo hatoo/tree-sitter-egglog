@@ -28,7 +28,19 @@ module.exports = grammar({
           $.rparen,
           $.rparen
         ),
-        seq($.lparen, "sort", $.ident, $.rparen)
+        seq($.lparen, "sort", $.ident, $.rparen),
+        seq(
+          $.lparen,
+          "function",
+          $.ident,
+          $.schema,
+          optional($.cost),
+          optional(":unextractable"),
+          optional(seq(":on_merge", list($, $.action))),
+          optional(":merge", $.expr),
+          $.rparen
+        ),
+        seq($.lparen, "declare", $.ident, $.ident, $.rparen)
       ),
 
     cost: ($) => seq(":cost", $.unum),
