@@ -31,13 +31,14 @@ const list = ($, item) => seq($.lparen, repeat(item), $.rparen);
 module.exports = grammar({
   name: "egglog",
 
-  extras: ($) => [$.comment, /\s/],
+  extras: ($) => [$.comment, $.ws],
 
   rules: {
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($.command),
 
-    comment: ($) => seq(";", /.*/),
+    comment: ($) => token(seq(";", /.*/)),
+    ws: ($) => token(/\s+/),
 
     lparen: ($) => choice("(", "["),
     rparen: ($) => choice(")", "]"),

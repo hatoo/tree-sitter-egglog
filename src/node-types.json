@@ -133,11 +133,6 @@
     }
   },
   {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "cost",
     "named": true,
     "fields": {},
@@ -508,10 +503,6 @@
     "named": false
   },
   {
-    "type": ";",
-    "named": false
-  },
-  {
     "type": "=",
     "named": false
   },
@@ -546,6 +537,10 @@
   {
     "type": "check-proof",
     "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
   },
   {
     "type": "datatype",
@@ -685,6 +680,10 @@
   },
   {
     "type": "unum",
+    "named": true
+  },
+  {
+    "type": "ws",
     "named": true
   }
 ]
