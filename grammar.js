@@ -1,4 +1,4 @@
-// This grammar is one to one translation from original Egglog grammar
+// This grammar is one to one translation with few exceptions from original Egglog grammar
 // https://github.com/egraphs-good/egglog/blob/8fc012f784cc810f79e8d6907f362955e46b559f/src/ast/parse.lalrpop
 
 // Its licence is as follows:
