@@ -3,11 +3,13 @@ const list = ($, item) => seq($.lparen, repeat(item), $.rparen);
 module.exports = grammar({
   name: "egglog",
 
-  extras: ($) => [/\s/, /;[^\n\r]*[\n\r]*/],
+  extras: ($) => [$.comment, /\s/],
 
   rules: {
     // TODO: add the actual grammar rules
     source_file: ($) => repeat($.command),
+
+    comment: ($) => seq(";", /.*/),
 
     lparen: ($) => choice("(", "["),
     rparen: ($) => choice(")", "]"),
@@ -182,7 +184,8 @@ module.exports = grammar({
 
     exprlist: ($) => seq($.lparen, repeat($.expr), $.rparen),
 
-    variant: ($) => seq($.ident, repeat($.type), optional($.cost), $.rparen),
+    variant: ($) =>
+      seq($.lparen, $.ident, repeat($.type), optional($.cost), $.rparen),
 
     type: ($) => choice($.ident),
 
@@ -193,6 +196,11 @@ module.exports = grammar({
       choice("NaN", /(-)?[0-9]+\.[0-9]+(e(\+)?(-)?[0-9]+)?/, "inf", "-inf"),
     ident: ($) => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
     symstring: ($) => $.string,
-    string: ($) => /"("[^"]*")+"/,
+    string: ($) =>
+      seq(
+        '"',
+        repeat(alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content)),
+        '"'
+      ),
   },
 });

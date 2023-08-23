@@ -8,6 +8,19 @@
         "name": "command"
       }
     },
+    "comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ";"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".*"
+        }
+      ]
+    },
     "lparen": {
       "type": "CHOICE",
       "members": [
@@ -1716,6 +1729,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "lparen"
+        },
+        {
+          "type": "SYMBOL",
           "name": "ident"
         },
         {
@@ -1811,18 +1828,46 @@
       "name": "string"
     },
     "string": {
-      "type": "PATTERN",
-      "value": "\"(\"[^\"]*\")+\""
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\\\\\"\\n]+"
+                }
+              }
+            },
+            "named": true,
+            "value": "string_content"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
     }
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "comment"
     },
     {
       "type": "PATTERN",
-      "value": ";[^\\n\\r]*[\\n\\r]*"
+      "value": "\\s"
     }
   ],
   "conflicts": [],

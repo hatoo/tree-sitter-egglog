@@ -133,6 +133,11 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "cost",
     "named": true,
     "fields": {},
@@ -367,6 +372,21 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "symstring",
     "named": true,
     "fields": {},
@@ -413,6 +433,10 @@
           "named": true
         },
         {
+          "type": "lparen",
+          "named": true
+        },
+        {
           "type": "rparen",
           "named": true
         },
@@ -422,6 +446,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "(",
@@ -473,6 +501,10 @@
   },
   {
     "type": ":when",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {
@@ -640,7 +672,7 @@
     "named": false
   },
   {
-    "type": "string",
+    "type": "string_content",
     "named": true
   },
   {
