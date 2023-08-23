@@ -8,28 +8,34 @@ module.exports = grammar({
 
   rules: {
     // TODO: add the actual grammar rules
-    source_file: $ => $.Num,
-    _expr: $ => $.Ident,
+    source_file: $ => $.expr,
 
-    LParen: $ => choice("(", "["),
-    RParen: $ => choice(")", "]"),
+    lparen: $ => choice("(", "["),
+    rparen: $ => choice(")", "]"),
 
-    List: $ => seq($.LParen, repeat($._expr), $.RParen),
-    Comma: $ => repeat1(seq($._expr, ",")),
+    list: $ => seq($.lparen, repeat($.expr), $.rparen),
+    comma: $ => repeat1(seq($.expr, ",")),
 
-    Command: $ => choice(
+    command: $ => choice(
+      seq($.lparen, "set-option", $.ident, $.expr, $.rparen),
     ),
 
-    Num: $ => /(-)?[0-9]+/,
-    UNum: $ => /[0-9]+/,
-    F64: $ => choice(
+    expr: $ => choice($.ident, $.literal, $.callexpr),
+
+    literal : $ => choice($.num, $.f64, $.symstring),
+
+    callexpr: $ => seq($.lparen, $.ident, repeat($.expr), $.rparen),
+
+    num: $ => /(-)?[0-9]+/,
+    unum: $ => /[0-9]+/,
+    f64: $ => choice(
       "NaN",
       /(-)?[0-9]+\.[0-9]+(e(\+)?(-)?[0-9]+)?/,
       "inf",
       "-inf"
     ),
-    Ident: $ => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
-    SymString: $ => $.String,
-    String: $ => /"("[^"]*")+"/
+    ident: $ => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
+    symstring: $ => $.string,
+    string: $ => /"("[^"]*")+"/
   }
 });

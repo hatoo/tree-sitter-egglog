@@ -3,13 +3,9 @@
   "rules": {
     "source_file": {
       "type": "SYMBOL",
-      "name": "Num"
+      "name": "expr"
     },
-    "_expr": {
-      "type": "SYMBOL",
-      "name": "Ident"
-    },
-    "LParen": {
+    "lparen": {
       "type": "CHOICE",
       "members": [
         {
@@ -22,7 +18,7 @@
         }
       ]
     },
-    "RParen": {
+    "rparen": {
       "type": "CHOICE",
       "members": [
         {
@@ -35,34 +31,34 @@
         }
       ]
     },
-    "List": {
+    "list": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "LParen"
+          "name": "lparen"
         },
         {
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_expr"
+            "name": "expr"
           }
         },
         {
           "type": "SYMBOL",
-          "name": "RParen"
+          "name": "rparen"
         }
       ]
     },
-    "Comma": {
+    "comma": {
       "type": "REPEAT1",
       "content": {
         "type": "SEQ",
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_expr"
+            "name": "expr"
           },
           {
             "type": "STRING",
@@ -71,19 +67,103 @@
         ]
       }
     },
-    "Command": {
+    "command": {
       "type": "CHOICE",
-      "members": []
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
+              "value": "set-option"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expr"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        }
+      ]
     },
-    "Num": {
+    "expr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "callexpr"
+        }
+      ]
+    },
+    "literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "num"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "f64"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symstring"
+        }
+      ]
+    },
+    "callexpr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "lparen"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ident"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
+    "num": {
       "type": "PATTERN",
       "value": "(-)?[0-9]+"
     },
-    "UNum": {
+    "unum": {
       "type": "PATTERN",
       "value": "[0-9]+"
     },
-    "F64": {
+    "f64": {
       "type": "CHOICE",
       "members": [
         {
@@ -104,15 +184,15 @@
         }
       ]
     },
-    "Ident": {
+    "ident": {
       "type": "PATTERN",
       "value": "(([[a-zA-z_]][\\w-]*)|([-+*/?!=<>&|^/%_]))+"
     },
-    "SymString": {
+    "symstring": {
       "type": "SYMBOL",
-      "name": "String"
+      "name": "string"
     },
-    "String": {
+    "string": {
       "type": "PATTERN",
       "value": "\"(\"[^\"]*\")+\""
     }
