@@ -367,21 +367,6 @@
     }
   },
   {
-    "type": "string",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "string_content",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "symstring",
     "named": true,
     "fields": {},
@@ -441,10 +426,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "\"",
-    "named": false
   },
   {
     "type": "(",
@@ -671,7 +652,7 @@
     "named": false
   },
   {
-    "type": "string_content",
+    "type": "string",
     "named": true
   },
   {

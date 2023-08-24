@@ -227,10 +227,14 @@ module.exports = grammar({
     ident: ($) => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
     symstring: ($) => $.string,
     string: ($) =>
-      seq(
-        '"',
-        repeat(alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content)),
-        '"'
+      token(
+        seq(
+          '"',
+          repeat(
+            alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content)
+          ),
+          '"'
+        )
       ),
   },
 });
