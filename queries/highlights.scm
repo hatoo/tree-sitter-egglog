@@ -5,7 +5,7 @@
 
 (comment) @comment
 (expr (ident) @variable.parameter)
-(callexpr (lparen) (ident) @function)
+(callexpr (ident) @function)
 
 (command (ident) @function)
 (variant (ident) @function)
