@@ -40,8 +40,8 @@ module.exports = grammar({
     comment: ($) => token(seq(";", /.*/)),
     ws: ($) => token(/\s+/),
 
-    lparen: ($) => choice("(", "["),
-    rparen: ($) => choice(")", "]"),
+    lparen: ($) => token(choice("(", "[")),
+    rparen: ($) => token(choice(")", "]")),
 
     comma: ($) => repeat1(seq($.expr, ",")),
 
