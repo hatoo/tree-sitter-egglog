@@ -13,7 +13,7 @@
 (command ((lparen) "declare" (ident) @variable (ident) @type (rparen)))
 (variant ((ident) @function))
 
-((ident) @variable)
 [(num) (unum)] @number
 (string) @string
 (type) @type
+(ident) @variable

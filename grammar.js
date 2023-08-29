@@ -217,7 +217,7 @@ module.exports = grammar({
     variant: ($) =>
       seq($.lparen, $.ident, repeat($.type), optional($.cost), $.rparen),
 
-    type: ($) => choice($.ident),
+    type: ($) => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
 
     identsort: ($) => seq($.lparen, $.ident, $.type, $.rparen),
     num: ($) => /(-)?[0-9]+/,

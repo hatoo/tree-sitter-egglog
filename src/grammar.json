@@ -1798,13 +1798,8 @@
       ]
     },
     "type": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "ident"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "(([[a-zA-z_]][\\w-]*)|([-+*/?!=<>&|^/%_]))+"
     },
     "identsort": {
       "type": "SEQ",
