@@ -7,6 +7,7 @@
 (comment) @comment
 (callexpr ((ident) @function))
 
+(command ("sort" (ident) @type))
 (command ("datatype" (ident) @type))
 (command ("relation" (ident) @function))
 (command ("function" (ident) @function))
