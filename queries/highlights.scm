@@ -11,7 +11,7 @@
 (command ("datatype" (ident) @type))
 (command ("relation" (ident) @function))
 (command ("function" (ident) @function))
-(command ((lparen) "declare" (ident) @variable (ident) @type (rparen)))
+(command ((lparen) "declare" (ident) @variable (type) @type (rparen)))
 (variant ((ident) @function))
 
 [(num) (unum)] @number

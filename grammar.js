@@ -72,7 +72,7 @@ module.exports = grammar({
           optional(seq(":default", $.expr)),
           $.rparen
         ),
-        seq($.lparen, "declare", $.ident, $.ident, $.rparen),
+        seq($.lparen, "declare", $.ident, $.type, $.rparen),
         seq($.lparen, "relation", $.ident, list($, $.type), $.rparen),
         seq($.lparen, "ruleset", $.ident, $.rparen),
         seq(
