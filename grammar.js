@@ -217,14 +217,15 @@ module.exports = grammar({
     variant: ($) =>
       seq($.lparen, $.ident, repeat($.type), optional($.cost), $.rparen),
 
-    type: ($) => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
+    // Using slightly different regex due to tree-sitter's bug(?)
+    type: ($) => /(([[a-zA-Za]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
 
     identsort: ($) => seq($.lparen, $.ident, $.type, $.rparen),
     num: ($) => /(-)?[0-9]+/,
     unum: ($) => /[0-9]+/,
     f64: ($) =>
       choice("NaN", /(-)?[0-9]+\.[0-9]+(e(\+)?(-)?[0-9]+)?/, "inf", "-inf"),
-    ident: ($) => /(([[a-zA-z_]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
+    ident: ($) => /(([[a-zA-Z]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
     symstring: ($) => $.string,
     string: ($) =>
       token(

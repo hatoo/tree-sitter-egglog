@@ -199,11 +199,6 @@
     }
   },
   {
-    "type": "ident",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "identsort",
     "named": true,
     "fields": {},
@@ -377,11 +372,6 @@
     }
   },
   {
-    "type": "type",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "variant",
     "named": true,
     "fields": {},
@@ -525,6 +515,10 @@
     "named": false
   },
   {
+    "type": "ident",
+    "named": true
+  },
+  {
     "type": "include",
     "named": false
   },
@@ -634,6 +628,10 @@
   },
   {
     "type": "string",
+    "named": true
+  },
+  {
+    "type": "type",
     "named": true
   },
   {
