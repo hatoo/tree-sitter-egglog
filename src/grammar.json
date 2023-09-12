@@ -1000,6 +1000,23 @@
             },
             {
               "type": "STRING",
+              "value": "print-stats"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "rparen"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lparen"
+            },
+            {
+              "type": "STRING",
               "value": "push"
             },
             {

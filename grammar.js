@@ -140,6 +140,7 @@ module.exports = grammar({
         seq($.lparen, "check", repeat($.fact), $.rparen),
         seq($.lparen, "check-proof", $.rparen),
         seq($.lparen, "run-schedule", repeat($.schedule), $.rparen),
+        seq($.lparen, "print-stats", $.rparen),
         seq($.lparen, "push", optional($.unum), $.rparen),
         seq($.lparen, "pop", optional($.unum), $.rparen),
         seq($.lparen, "print-table", $.ident, optional($.unum), $.rparen),
