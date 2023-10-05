@@ -134,7 +134,7 @@ module.exports = grammar({
           $.lparen,
           "query-extract",
           optional(seq(":variants", $.unum)),
-          $.fact,
+          $.expr,
           $.rparen
         ),
         seq($.lparen, "check", repeat($.fact), $.rparen),
@@ -203,13 +203,13 @@ module.exports = grammar({
     name: ($) => seq("[", $.ident, "]"),
 
     fact: ($) =>
-      choice(seq($.lparen, "=", repeat1($.expr), $.expr, $.rparen), $.expr),
+      choice(seq($.lparen, "=", repeat1($.expr), $.expr, $.rparen), $.callexpr),
 
     schema: ($) => seq(list($, $.type), $.type),
 
     expr: ($) => choice($.literal, $.ident, $.callexpr),
 
-    literal: ($) => choice($.num, $.f64, $.symstring),
+    literal: ($) => choice($.unit, $.num, $.f64, $.symstring),
 
     callexpr: ($) => seq($.lparen, $.ident, repeat($.expr), $.rparen),
 
@@ -222,6 +222,7 @@ module.exports = grammar({
     type: ($) => /(([[a-zA-Za]][\w-]*)|([-+*/?!=<>&|^/%_]))+/,
 
     identsort: ($) => seq($.lparen, $.ident, $.type, $.rparen),
+    unit: ($) => seq($.lparen, $.rparen),
     num: ($) => /(-)?[0-9]+/,
     unum: ($) => /[0-9]+/,
     f64: ($) =>

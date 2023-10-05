@@ -918,7 +918,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "fact"
+              "name": "expr"
             },
             {
               "type": "SYMBOL",
@@ -1667,7 +1667,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "expr"
+          "name": "callexpr"
         }
       ]
     },
@@ -1720,6 +1720,10 @@
     "literal": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "unit"
+        },
         {
           "type": "SYMBOL",
           "name": "num"
@@ -1832,6 +1836,19 @@
         {
           "type": "SYMBOL",
           "name": "type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
+    "unit": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "lparen"
         },
         {
           "type": "SYMBOL",

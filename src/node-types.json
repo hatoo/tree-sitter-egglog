@@ -184,6 +184,10 @@
       "required": true,
       "types": [
         {
+          "type": "callexpr",
+          "named": true
+        },
+        {
           "type": "expr",
           "named": true
         },
@@ -243,6 +247,10 @@
         },
         {
           "type": "symstring",
+          "named": true
+        },
+        {
+          "type": "unit",
           "named": true
         }
       ]
@@ -366,6 +374,25 @@
       "types": [
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unit",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "lparen",
+          "named": true
+        },
+        {
+          "type": "rparen",
           "named": true
         }
       ]
