@@ -31,6 +31,11 @@
     }
   },
   {
+    "type": "bool",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "callexpr",
     "named": true,
     "fields": {},
@@ -237,6 +242,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "bool",
+          "named": true
+        },
         {
           "type": "f64",
           "named": true
@@ -494,10 +503,6 @@
     "named": false
   },
   {
-    "type": "add-ruleset",
-    "named": false
-  },
-  {
     "type": "birewrite",
     "named": false
   },
@@ -535,6 +540,10 @@
   },
   {
     "type": "fail",
+    "named": false
+  },
+  {
+    "type": "false",
     "named": false
   },
   {
@@ -582,15 +591,15 @@
     "named": false
   },
   {
+    "type": "print-function",
+    "named": false
+  },
+  {
     "type": "print-size",
     "named": false
   },
   {
     "type": "print-stats",
-    "named": false
-  },
-  {
-    "type": "print-table",
     "named": false
   },
   {
@@ -660,6 +669,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "type",

@@ -1,6 +1,6 @@
 [(lparen) (rparen)] @punctuation.bracket
-["set-option" "datatype" "sort" "function" "declare" "relation" "ruleset" "rule" "rewrite" "birewrite" "let" "run" "simplify" "add-ruleset" "calc" "query-extract" "check" "check-proof" "run-schedule" "print-stats" "push" "pop" "print-table" "print-size" "input" "output" "fail" "include"] @keyword
-["saturate" "set" "repeat" "delete" "union" "panic" "extract" "let"] @keyword
+["set-option" "datatype" "sort" "function" "declare" "relation" "ruleset" "rule" "rewrite" "birewrite" "let" "run" "simplify" "calc" "query-extract" "check" "check-proof" "run-schedule" "print-stats" "push" "pop" "print-function" "print-size" "input" "output" "fail" "include"] @keyword
+["saturate" "set" "repeat" "delete" "union" "panic" "extract" "let" "true" "false"] @keyword
 (fact ("=" @keyword))
 [":unextractable" ":on_merge" ":merge" ":default" ":ruleset" ":name" ":when" ":until" ":variants" ":cost"] @attribute
 

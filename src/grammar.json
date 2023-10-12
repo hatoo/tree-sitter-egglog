@@ -833,27 +833,6 @@
             },
             {
               "type": "STRING",
-              "value": "add-ruleset"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "ident"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "rparen"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "lparen"
-            },
-            {
-              "type": "STRING",
               "value": "calc"
             },
             {
@@ -1075,7 +1054,7 @@
             },
             {
               "type": "STRING",
-              "value": "print-table"
+              "value": "print-function"
             },
             {
               "type": "SYMBOL",
@@ -1726,6 +1705,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "bool"
+        },
+        {
+          "type": "SYMBOL",
           "name": "num"
         },
         {
@@ -1853,6 +1836,19 @@
         {
           "type": "SYMBOL",
           "name": "rparen"
+        }
+      ]
+    },
+    "bool": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
         }
       ]
     },

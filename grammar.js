@@ -120,7 +120,6 @@ module.exports = grammar({
           $.rparen
         ),
         seq($.lparen, "simplify", $.schedule, $.expr, $.rparen),
-        seq($.lparen, "add-ruleset", $.ident, $.rparen),
         seq(
           $.lparen,
           "calc",
@@ -143,7 +142,7 @@ module.exports = grammar({
         seq($.lparen, "print-stats", $.rparen),
         seq($.lparen, "push", optional($.unum), $.rparen),
         seq($.lparen, "pop", optional($.unum), $.rparen),
-        seq($.lparen, "print-table", $.ident, optional($.unum), $.rparen),
+        seq($.lparen, "print-function", $.ident, optional($.unum), $.rparen),
         seq($.lparen, "print-size", $.ident, $.rparen),
         seq($.lparen, "input", $.ident, $.string, $.rparen),
         seq($.lparen, "output", $.string, repeat1($.expr), $.rparen),
@@ -209,7 +208,7 @@ module.exports = grammar({
 
     expr: ($) => choice($.literal, $.ident, $.callexpr),
 
-    literal: ($) => choice($.unit, $.num, $.f64, $.symstring),
+    literal: ($) => choice($.unit, $.bool, $.num, $.f64, $.symstring),
 
     callexpr: ($) => seq($.lparen, $.ident, repeat($.expr), $.rparen),
 
@@ -223,6 +222,7 @@ module.exports = grammar({
 
     identsort: ($) => seq($.lparen, $.ident, $.type, $.rparen),
     unit: ($) => seq($.lparen, $.rparen),
+    bool: ($) => choice("true", "false"),
     num: ($) => /(-)?[0-9]+/,
     unum: ($) => /[0-9]+/,
     f64: ($) =>
