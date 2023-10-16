@@ -1061,16 +1061,8 @@
               "name": "ident"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "unum"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "unum"
             },
             {
               "type": "SYMBOL",
