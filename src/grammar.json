@@ -1082,8 +1082,16 @@
               "value": "print-size"
             },
             {
-              "type": "SYMBOL",
-              "name": "ident"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "ident"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
               "type": "SYMBOL",

@@ -143,7 +143,7 @@ module.exports = grammar({
         seq($.lparen, "push", optional($.unum), $.rparen),
         seq($.lparen, "pop", optional($.unum), $.rparen),
         seq($.lparen, "print-function", $.ident, $.unum, $.rparen),
-        seq($.lparen, "print-size", $.ident, $.rparen),
+        seq($.lparen, "print-size", optional($.ident), $.rparen),
         seq($.lparen, "input", $.ident, $.string, $.rparen),
         seq($.lparen, "output", $.string, repeat1($.expr), $.rparen),
         seq($.lparen, "fail", $.command, $.rparen),
