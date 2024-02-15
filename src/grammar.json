@@ -79,9 +79,26 @@
         ]
       }
     },
+    "top_parens": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "lparen"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rparen"
+        }
+      ]
+    },
     "command": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "top_parens"
+        },
         {
           "type": "SEQ",
           "members": [

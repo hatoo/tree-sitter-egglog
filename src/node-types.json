@@ -123,6 +123,10 @@
           "named": true
         },
         {
+          "type": "top_parens",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         },
@@ -383,6 +387,25 @@
       "types": [
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "top_parens",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "lparen",
+          "named": true
+        },
+        {
+          "type": "rparen",
           "named": true
         }
       ]

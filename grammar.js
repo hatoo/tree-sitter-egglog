@@ -45,8 +45,12 @@ module.exports = grammar({
 
     comma: ($) => repeat1(seq($.expr, ",")),
 
+    // This isn't a valid grammar rule, but it's used to handle partial parsing
+    top_parens: ($) => seq($.lparen, $.rparen),
+
     command: ($) =>
       choice(
+        $.top_parens,
         seq($.lparen, "set-option", $.ident, $.expr, $.rparen),
         seq($.lparen, "datatype", $.ident, repeat($.variant), $.rparen),
         seq(
